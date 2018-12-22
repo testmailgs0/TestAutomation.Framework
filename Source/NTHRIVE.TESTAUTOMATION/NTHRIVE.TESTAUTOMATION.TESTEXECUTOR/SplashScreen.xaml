@@ -1,0 +1,29 @@
+﻿<Window x:Class="Nthrive.TestAutomation.TestExecutor.SplashScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nthrive.TestAutomation.TestExecutor"
+        mc:Ignorable="d"
+        Title="SplashScreen" Height="450" Width="800"
+        ResizeMode="NoResize" WindowStyle="None"
+        WindowStartupLocation="CenterScreen" Background="White" BorderThickness="5" BorderBrush="AliceBlue"
+        >
+    <Window.Resources>
+        <Style x:Key="ImageStyle1" TargetType="{x:Type Image}"/>
+    </Window.Resources>
+    <Grid RenderTransformOrigin="0.472,0.883">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="75"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" TextBlock.FontSize="40px" TextBlock.FontFamily="Tahoma" TextBlock.TextAlignment="Center" Header="Test Automation Framework" BorderBrush="WhiteSmoke">
+            <Image Grid.Row="0" Source="..\icons\NThrive_Logo_Large_calogo4258.jpg" >
+            </Image>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Header="Loading Modules" BorderBrush="WhiteSmoke" TextBlock.FontSize="20px" TextBlock.FontFamily="Tahoma">
+            <ProgressBar Name="prgbar"  Value="{Binding Progress, Mode=OneWay}" 
+             Visibility="{Binding ProgressVisibility}"></ProgressBar>
+        </GroupBox>
+    </Grid>
+</Window>

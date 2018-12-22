@@ -1,0 +1,102 @@
+﻿<Window xmlns:my="http://infragistics.com/DataPresenter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"  x:Class="Nthrive.TestAutomation.TestExecutor.MainWindow"
+        Title="Test Automation Framework Version 1.01" TextBlock.FontSize="18px" WindowStartupLocation="CenterScreen" Background="AntiqueWhite" Width="770" Height="643">
+    
+    <Grid Height="611" VerticalAlignment="Top" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="88"/>
+            <RowDefinition Height="512"/>
+            <RowDefinition Height="83"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="743.699"/>
+        </Grid.ColumnDefinitions>
+        <Border CornerRadius="5" Grid.RowSpan="5" BorderThickness="0" BorderBrush="#FF212C39" Background="#FFD1D2D4" Grid.ColumnSpan="2" Margin="0,-2,91,66" />
+        <Grid Grid.Row="0" Margin="0,0,57,97" Grid.RowSpan="4" Grid.ColumnSpan="2">
+            <GroupBox Header="Test Case Window" BorderThickness="4" FontSize="15px" Margin="15,13,10,0" Height="117" VerticalAlignment="Top">
+                <Grid Margin="0,0,39,0" Width="726">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox x:Name="CubeToDB" Content="Cube To DB Validation" Margin="5,15,5,5" IsChecked="{Binding CubeToDB_Validation, Mode=TwoWay}" FontFamily="Tahoma" FontSize="12" Grid.Row="0"/>
+                    <CheckBox x:Name="DB_validation" Content="Database Validation" Margin="5,15,5,5" IsChecked="{Binding DB_Validation, Mode=TwoWay}" FontFamily="Tahoma" FontSize="12" Grid.Row="0" Grid.Column="1"/>
+                    <CheckBox x:Name="UI_Validation" Content="UI Validation" Margin="150,15,10,5" IsChecked="{Binding UI_Validation,Mode=TwoWay}" FontFamily="Tahoma" FontSize="12" Grid.Row="0" Grid.Column="1"/>
+                    <CheckBox x:Name="DBToDB" Content="DB To DB Validation" Margin="19,15,141,5" IsChecked="{Binding DBToDB_Validation, Mode=TwoWay}" FontFamily="Tahoma" FontSize="12" Grid.Row="0" Grid.Column="2"/>
+                    <Button x:Name="TestCases" Command="{Binding BrowseTCase}" Height="25" FontSize="12px"  Margin="0,9,10,11" Width="150" Content="Browse Test Cases" FontFamily="Tahoma" Grid.Row="2" Visibility="Visible" Grid.Column="0"/>
+                    <TextBox x:Name="TcaseFolder" Width="300px"  Height="27" Margin="19,12,291,13" Text="{Binding TestCasesPath, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <Button x:Name="LoadCases" Command="{Binding LoadedTCases}" Content="Load Test Cases" Height="25" FontSize="12px"  Margin="50,9,99,13" Width="150" FontFamily="Tahoma" Grid.Row="2" Visibility="Visible" Grid.Column="2"/>
+                </Grid>
+
+            </GroupBox>
+
+        </Grid>
+        <Grid Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="0,-2,0,2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="376*"/>
+                <ColumnDefinition Width="21*"/>
+                <ColumnDefinition Width="403*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="Loaded Test Cases" Height="280" FontSize="15px" Margin="14,141,-199,179" Grid.ColumnSpan="3" BorderThickness="4" >
+                <Grid HorizontalAlignment="Left" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="3" Margin="10,0,0,-5" Height="150" Width="640">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="17*"/>
+                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="113*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="153*"/>
+                        <ColumnDefinition Width="460*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.Style>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsChecked, ElementName=DownloadCheckBox}" Value="False">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <DataGrid Name="Result" Grid.Column="0" Grid.Row="0" ItemsSource="{Binding LoadedCases}" Margin="0,-39,-64,-36" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+                </Grid>
+            </GroupBox>
+
+        </Grid>
+        <GroupBox FontSize="15px" Header="Commands" Grid.Row="3" BorderThickness="4"  Margin="14,348,45,26" Grid.ColumnSpan="2">
+            <Grid TextBlock.FontSize="12px" Height="120" Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom" Margin="10,0,200,0" Width="588" HorizontalAlignment="Left">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBox TextBlock.FontWeight="ExtraLight" TextBlock.Foreground="Gray" Text="Enter Email To Send" Grid.Column="0" Grid.Row="0" Margin="50,0,0,0" Height="27" Width="150"/>
+                <TextBox TextBlock.FontWeight="ExtraLight" TextBlock.Foreground="Gray"  Text="DB_To_Connect" Grid.Column="1" Grid.Row="0" Margin="50,0,0,0" Height="27" Width="150"/>
+                <TextBox TextBlock.FontWeight="ExtraLight" TextBlock.Foreground="Gray"  Text="Cube_To_Connect" Grid.Column="2" Grid.Row="0" Margin="50,0,0,0" Height="27" Width="150"/>
+                <Button TextBlock.FontFamily="tahoma"  Command="{Binding Path=Run}" Grid.Column="0" Grid.Row="1" Content="Runt Test" Margin="50,0,0,15" Height="25" Width="150"/>
+                <Button TextBlock.FontFamily="tahoma" Grid.Column="1" Grid.Row="1" Content="Save Layout"  Margin="50,0,0,15" Height="25" Width="150"/>
+                <Button TextBlock.FontFamily="tahoma" Command="{Binding Path=ExitApp}"  Grid.Column="3" Grid.Row="1" Content="Close Executor" Margin="50,0,0,15"  Height="25" Width="150"/>
+
+            </Grid>
+        </GroupBox>
+    </Grid>
+
+
+</Window>
